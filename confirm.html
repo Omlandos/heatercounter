@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="apple-touch-icon" href="/assets/logo.png" />
+  <title>Email Confirmed — Heater</title>
+  <meta name="description" content="Your Heater account has been confirmed." />
+  <meta property="og:title" content="Email Confirmed — Heater" />
+  <meta property="og:description" content="Your Heater account has been confirmed." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="/" class="brand">
+        <img src="/assets/logo.png" alt="" class="logo-mark" />
+        <span>HEATER</span>
+      </a>
+      <div class="links">
+        <a href="/support">Support</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div id="confirm-success" style="display: none; text-align: center; padding-top: 32px;">
+      <img src="/assets/logo.png" alt="Heater" style="width: 96px; height: 96px; object-fit: contain; margin: 0 auto 24px; display: block; filter: drop-shadow(0 0 30px rgba(34, 197, 94, 0.25));" />
+      <h1>Email Confirmed</h1>
+      <p style="font-size: 18px; margin-bottom: 24px;">Your account is active. Open the Heater app to start counting.</p>
+      <p style="color: var(--text-muted);">You can close this tab.</p>
+    </div>
+
+    <div id="confirm-error" style="display: none; text-align: center; padding-top: 32px;">
+      <h1>Invalid or Expired Link</h1>
+      <p style="font-size: 18px;">This confirmation link is no longer valid. Please request a new confirmation email from the Heater app.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Heater · Made with ♠</p>
+      <p style="margin-top: 8px;">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/support">Support</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var hash = window.location.hash.substring(1);
+      var params = new URLSearchParams(hash);
+      var hasTokens = params.has('access_token');
+
+      if (hasTokens) {
+        document.getElementById('confirm-success').style.display = 'block';
+      } else {
+        document.getElementById('confirm-error').style.display = 'block';
+      }
+    })();
+  </script>
+</body>
+</html>
